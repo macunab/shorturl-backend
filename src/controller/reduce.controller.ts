@@ -4,18 +4,16 @@ import reduceModel from "../models/reduce.model";
 
 class ReduceController {
 
-    reduce(req: Request, res: Response) {
+    async reduce(req: Request, res: Response) {
 
         const { url } = req.body;
-
         const reduce = new reduceModel({
             originalUrl: url,
             short: 'aca va el codigo generado por shortuuid'
         })
-
         try {
             //si el short generado no existe 
-            reduce.save();
+            await reduce.save();
             res.status(200).json({
                 ok: true,
                 msg: 'url reduced successfully'
