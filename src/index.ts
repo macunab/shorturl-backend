@@ -14,9 +14,10 @@ dbInit.connect(process.env.DB_CNN as string);
 const PORT: number = parseInt( process.env.PORT as string, 10);
 const app: Application = express();
 const routes: Array<CommonRoutesConfig> = [];
+console.log('ENTRO');
 
-app.use(cors);
-app.use(helmet);
+app.use(helmet());
+app.use(cors());
 app.use(express.json());
 routes.push(new ReduceRoute(app));
 app.use('*', (req: Request, res: Response) => {

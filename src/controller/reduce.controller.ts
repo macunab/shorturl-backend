@@ -11,8 +11,14 @@ class ReduceController {
         });
     }
 
-    async getReduce(req: Request, res: Response) {
-
+    getReduce(req: Request, res: Response) {
+        console.log('LLEGO AL GET REDUCE');
+        const { id } = req.params;
+        console.log(id);
+        return res.status(200).json({
+            ok: true,
+            msg: 'entro al get'
+        })
     }
 
 }

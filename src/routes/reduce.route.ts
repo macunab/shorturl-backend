@@ -14,10 +14,15 @@ export class ReduceRoute extends CommonRoutesConfig {
     configureRoutes(): Application {
         this.app.route('/api/reduce')
             .post(
-                //check('url', 'The URL is required').not().isEmpty(),
-                //validateFields.verifyErrors,
+                check('url', 'The URL is required').not().isEmpty(),
+                validateFields.verifyErrors,
                 reduceController.reduce
             );
+
+        this.app.route('/api/reduce/:id')
+                .get(
+                    reduceController.getReduce
+                )
 
         return this.app;
     }
