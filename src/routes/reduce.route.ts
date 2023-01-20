@@ -20,9 +20,7 @@ export class ReduceRoute extends CommonRoutesConfig {
             );
 
         this.app.route('/api/reduce/:id')
-                .get(
-                    reduceController.getReduce
-                )
+                .get(reduceController.originalUrl);
 
         return this.app;
     }

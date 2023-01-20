@@ -8,7 +8,8 @@ const reduceSchema = new Schema({
     },
     short: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     }
 });
 
