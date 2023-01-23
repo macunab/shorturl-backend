@@ -26,6 +26,7 @@ class ReduceController {
             await reduce.save();
             res.status(200).json({
                 ok: true,
+                originalUrl: shortUuid,
                 msg: 'url reduced successfully'
             });
         } catch( error ) {
