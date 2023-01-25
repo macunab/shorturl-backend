@@ -9,6 +9,7 @@ import helmet from 'helmet';
 import dbInit from './db/dbInit';
 import { CommonRoutesConfig } from './helpers/commonRoutesConfig';
 import { ReduceRoute } from './routes/reduce.route';
+import path from 'path';
 
 dbInit.connect(process.env.DB_CNN as string);
 const PORT: number = parseInt( process.env.PORT as string, 10);
@@ -21,10 +22,7 @@ app.use(cors());
 app.use(express.json());
 routes.push(new ReduceRoute(app));
 app.use('*', (req: Request, res: Response) => {
-    res.status(404).json({
-        ok: false,
-        msg: 'Ohh you are lost, read the API documentation to find your way back home'
-    })
+    res.sendFile( path.resolve( __dirname, 'public/index.html'));
 })
 
 app.listen( PORT, () => {
