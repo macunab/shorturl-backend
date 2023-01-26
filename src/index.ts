@@ -19,10 +19,11 @@ console.log('ENTRO');
 
 app.use(helmet());
 app.use(cors());
+app.use( express.static('short-url'));
 app.use(express.json());
 routes.push(new ReduceRoute(app));
-app.use('*', (req: Request, res: Response) => {
-    res.sendFile( path.resolve( __dirname, 'public/index.html'));
+app.get('*', (req: Request, res: Response) => {
+    res.sendFile( path.resolve(__dirname, 'index.html'));
 })
 
 app.listen( PORT, () => {
